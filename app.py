@@ -53,7 +53,8 @@ def route_callback(ch, method, properties, body):
 
 def callback(ch, method, properties, body):
     logging.info("callback")
-    print(" [x] %r:%r" % (method.routing_key, body))
+    logging.info("key={}".format(method.routing_key))
+    logging.info("body={}".format(body))
 
 
 def main():
@@ -72,7 +73,7 @@ if __name__ == "__main__":
         version=1,
         formatters={
             "simple": {
-                "format": """%(asctime)s | %(name)-12s | %(levelname)-8s | %(message)s"""
+                "format": """%(asctime)s | %(name)s | %(levelname)s | %(message)s"""
             }
         },
         handlers={"console": {"class": "logging.StreamHandler", "formatter": "simple"}},
